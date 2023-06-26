@@ -1,0 +1,2 @@
+# ML_Internship_Project__Adult_Census_Income_Prediction
+Adult Census Income Prediction
