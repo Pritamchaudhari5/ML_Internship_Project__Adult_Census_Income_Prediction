@@ -5,3 +5,5 @@ seaborn
 scikit-learn
 tabulate
 Flask
+imbalanced-learn
+pickle
