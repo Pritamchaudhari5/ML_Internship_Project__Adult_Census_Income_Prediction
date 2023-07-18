@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Census Income Predictor</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+
+<body>
+  <div class="login">
+    <h1>Census Income Predictor</h1>
+
+    <form action="{{ url_for('predict')}}" method="post">
+      <input type="number" name="Age" placeholder="Age" required="required" pattern="\d*" title="Numbers only, please." />
+
+      <select type="text" name="Workclass" placeholder="Workclass" required="required">
+        <option value="Private">Private</option>
+        <option value="Others">Others</option>
+      </select>
+
+      <input type="number" name="Fnlwgt" placeholder="Fnlwgt" required="required" pattern="\d*" title="Numbers only, please." />
+      <input type="number" name="Years of Education" placeholder="Years of Education" required="required" pattern="\d*" title="Numbers only, please." />
+      <input type="text" name="Years of Education" placeholder="Years of Education" required="required" pattern="\d*" title="Numbers only, please." />
+
+      <select type="text" name="Marital Status" placeholder="Marital Status" required="required">
+        <option value="Never-married">Never-married</option>
+        <option value="Married">Married</option>
+        <option value="Divorced">Divorced</option>
+        <option value="Separated">Separated</option>
+        <option value="Widowed">Widowed</option>
+        <option value="Married-spouse-absent">Married-spouse-absent</option>
+        <option value="Married-AF-spouse">Married-AF-spouse</option>
+      </select>
+
+      <select type="text" name="Occupation Code" placeholder="Occupation Code" required="required">
+        <option value="Adm-clerical">Adm-clerical</option>
+        <option value="Exec-managerial">Exec-managerial</option>
+        <option value="Handlers-cleaners">Handlers-cleaners</option>
+        <option value="Prof-specialty">Prof-specialty</option>
+        <option value="Other-Service">Other-Service</option>
+        <option value="Sales">Sales</option>
+        <option value="Craft-repair">Craft-repair</option>
+        <option value="Transport-moving">Transport-moving</option>
+        <option value="Farming-fishing">Farming-fishing</option>
+        <option value="Machine-op-insect">Machine-op-insect</option>
+        <option value="Tech-support">Tech-support</option>
+        <option value="Protective-serv">Protective-serv</option>
+        <option value="Armed-forces">Armed-forces</option>
+        <option value="Priv-house-serve">Priv-house-serve</option>
+      </select>
+
+      
+
+      <select type="text" name="Relationship" placeholder="Relationship" required="required"></select>
+        <option value="Not-in-family">Not-in-family</option>
+        <option value="Husband">Husband</option>
+        <option value="Wife">Wife</option>
+        <option value="Own-child">Own-child</option>
+        <option value="Unmarried">Unmarried</option>
+        <option value="Other-relative">Other-relative</option>
+      </select>
+
+      <select type="text" name="" placeholder="" required="required"></select>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+      </select>
+
+      <select type="text" name="" placeholder="" required="required"></select>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+      </select>
+
+      <select type="text" name="Race" placeholder="Race" required="required">
+        <option value="White"></option>
+        <option value="Others"></option>
+      </select>
+
+      <select type="text" name="Sex" placeholder="Sex" required="required">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+
+      <select type="text" name="Country" placeholder="Country" required="required">
+        <option value="United-States">United-States</option>
+        <option value="Others">Others</option>
+      </select>
+
+      <input type="number" name="Capital Gain" placeholder="Capital Gain" required="required" pattern="\d*" title="Numbers only, please." />
+      <input type="number" name="Capital Loss" placeholder="Capital Loss" required="required" pattern="\d*" title="Numbers only, please." />
+      <input type="number" name="Hours of work per week" placeholder="Hours of work per week" required="required" pattern="\d*" title="Numbers only, please." />
+
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+    <br>
+    <br>
+    <h2> {{ prediction_text }} </h2>
+
+  </div>
+
+</body>
+
+</html>

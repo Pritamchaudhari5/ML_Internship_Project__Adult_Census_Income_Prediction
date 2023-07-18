@@ -141,7 +141,7 @@ def predict():
         elif race != 'white':
             race_val = 0
 
-        sex = request.form['sex']
+        sex = request.form['Sex']
         if sex == 'Male':
             sex_val = 0
         elif sex == 'Female':
