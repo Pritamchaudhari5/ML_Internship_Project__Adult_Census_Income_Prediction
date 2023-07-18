@@ -1,0 +1,79 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+  }
+  
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px; /* Add a larger border-radius for a curved container */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 18px;
+    color: #555;
+  }
+  
+  form {
+    display: grid;
+    grid-gap: 10px;
+    border-radius: 20px; /* Add border-radius to form for a curved appearance */
+    padding: 20px; /* Add padding to the form to create some spacing from the curved edges */
+  }
+  
+  input[type="text"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  select {
+    appearance: none;
+    /* For removing the default arrow in Chrome */
+    -webkit-appearance: none;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Specific styles for the "login" class */
+  .login {
+    margin: 100px auto;
+  }
+  
+  /* Additional styles for the form elements */
+  input[type="text"]:focus,
+  select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  /* Responsive styles for larger screens */
+  @media screen and (min-width: 768px) {
+    .container {
+      max-width: 600px;
+    }
+  }
+  

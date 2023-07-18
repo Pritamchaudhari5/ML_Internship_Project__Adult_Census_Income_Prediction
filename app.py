@@ -11,8 +11,6 @@ dataset = pd.read_csv(r"D:\Intern projects\ML_Internship_Project__Adult_Census_I
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 
-dataset['income'] = le.fit_transform(dataset['income'])
-
 # Dropping duplicates and handling missing values
 dataset.drop_duplicates(inplace=True)
 dataset['country'] = dataset['country'].replace(' ?',np.nan)
@@ -46,11 +44,7 @@ rs = RandomOverSampler(random_state=30)
 
 rs.fit(X,y)
 
-
-from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler()
-
-X = scaler.fit_transform(X) 
+X,y = rs.fit_resample(X, y)
 
 @app.route('/')
 def home():
@@ -61,6 +55,8 @@ def predict():
     
     if request.method == 'POST':
         marital_name = request.form['Marital Status']
+
+        marital_value = 0
         
         if marital_name == 'Never-married':
             marital_value = 0
@@ -81,6 +77,8 @@ def predict():
         age_value = request.form['Age']
 
         workclass = request.form['Workclass']
+        workclass_val = 1
+
         if workclass == 'Private':
             workclass_val = 1
         elif workclass != 'Private':
@@ -90,6 +88,9 @@ def predict():
         edu_num_value = request.form['Years of Education']
 
         occupation = request.form['Occupation Code']
+
+        occupation_value = 0
+
         if occupation == 'Adm-clerical':
             occupation_value = 0
         elif occupation == 'Exec-managerial':
@@ -121,7 +122,10 @@ def predict():
         
 
 
-        relationship = request.form['Relationship']        
+        relationship = request.form['Relationship']   
+
+        relationship_value = 0
+
         if relationship == 'Not-in-family':
             relationship_value = 0
         elif relationship == 'Husband':
@@ -136,12 +140,17 @@ def predict():
             relationship_value = 5
 
         race = request.form['Race']
+
+        race_val = 1
+
         if race == 'white':
             race_val = 1
         elif race != 'white':
             race_val = 0
 
         sex = request.form['Sex']
+        sex_val = 0
+
         if sex == 'Male':
             sex_val = 0
         elif sex == 'Female':
@@ -150,13 +159,16 @@ def predict():
         capital_gain = request.form["Capital Gain"]
         capital_loss = request.form['Capital Loss']
 
-        hours = request.form['Hours of work per week']
-        if hours > 40:
+        hours = request.form['Hours']
+        hours_value = 0
+        if hours == "More-than-40":
             hours_value = 1
-        elif hours <= 40:
+        elif hours == "Less-than-40":
             hours_value = 0
 
         country = request.form['Country']
+        country_val = 1
+
         if country == ' United-States':
             country_val = 1
         elif country != ' United-States':
@@ -167,9 +179,12 @@ def predict():
                 occupation_value, relationship_value, race_val, sex_val, capital_gain,
                  capital_loss, hours_value, country_val]
     
-    int_features = [int(x) for x in features]
+    print(features)
+    
+    int_features = [int(a) for a in features]
     final_features = [np.array(int_features)]
-    prediction = model.predict(scaler.transform(final_features))
+    prediction = model.predict(final_features)
+    print(prediction)
     
     if prediction == 1:
         output = "Income is more than 50K"

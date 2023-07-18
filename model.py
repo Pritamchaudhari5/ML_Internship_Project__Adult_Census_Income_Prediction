@@ -44,7 +44,6 @@ rs = RandomOverSampler(random_state=30)
 rs.fit(X,y)
 
 X1,y1 = rs.fit_resample(X, y)
-y1.value_counts(normalize=True)
 
 # Let's create a train and test dataset
 
