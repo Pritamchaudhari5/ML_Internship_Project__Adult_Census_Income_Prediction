@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, render_template
 import pickle
 
 app = Flask(__name__)
@@ -179,12 +179,12 @@ def predict():
                 occupation_value, relationship_value, race_val, sex_val, capital_gain,
                  capital_loss, hours_value, country_val]
     
-    print(features)
+    #print(features)
     
     int_features = [int(a) for a in features]
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
-    print(prediction)
+    #print(prediction)
     
     if prediction == 1:
         output = "Income is more than 50K"

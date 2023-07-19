@@ -1,5 +1,12 @@
 /* Global Styles */
 body {
+    
+    /* Relative path to your background image file */
+    background-image: url("back.jpg");
+    /* Optionally, you can control the background size and repeat behavior */
+    background-size: cover; /* Options: cover, contain, or specific dimensions */
+    background-repeat: no-repeat; /* Options: repeat, repeat-x, repeat-y, or no-repeat */
+    
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -16,15 +23,35 @@ body {
   }
   
   h1 {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: #007bff;
     text-align: center;
-    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(42, 21, 21, 0.2);
+    letter-spacing: 2px;
+    background-color: silver;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    width: 650px;
+    margin: 0 auto;
   }
   
   h2 {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 18px;
-    color: #555;
+    font-size: 36px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center; /* Center the text */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
+    letter-spacing: 2px;
+    background-color: #007bff; /* Set a background color */
+    padding: 10px 20px; /* Add padding to create some spacing around the text */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+    width: 1000px; /* Set a fixed width */
+    margin: 0 auto; /* Center the h2 element horizontally */
+    
   }
   
   form {
@@ -32,14 +59,18 @@ body {
     grid-gap: 10px;
     border-radius: 20px; /* Add border-radius to form for a curved appearance */
     padding: 20px; /* Add padding to the form to create some spacing from the curved edges */
+    width: 450px; /* You can adjust this value based on your preference */
+    margin: 0 auto; /* Center the select elements */
   }
   
   input[type="text"],
   select {
-    width: 100%;
+    width: 400;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid dodgerblue;
     border-radius: 5px;
+    /* Additional styles to minimize width and center the select elements */
+    
   }
   
   select {
