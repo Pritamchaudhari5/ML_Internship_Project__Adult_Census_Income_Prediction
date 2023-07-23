@@ -6,45 +6,6 @@ import pickle
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 
-dataset = pd.read_csv(r"Adult_Census_Income_Data\adult.csv")
-
-from sklearn.preprocessing import LabelEncoder
-le = LabelEncoder()
-
-# Dropping duplicates and handling missing values
-dataset.drop_duplicates(inplace=True)
-dataset['country'] = dataset['country'].replace(' ?',np.nan)
-dataset['workclass'] = dataset['workclass'].replace(' ?',np.nan)
-dataset['occupation'] = dataset['occupation'].replace(' ?',np.nan)
-dataset.dropna(how='any',inplace=True)
-
-for dataset in [dataset]:
-    dataset.loc[dataset['country'] != ' United-States', 'country'] = 0
-    dataset.loc[dataset['country'] == ' United-States', 'country'] = 1
-    dataset.loc[dataset['race'] != ' White', 'race'] = 0
-    dataset.loc[dataset['race'] == ' White', 'race'] = 1
-    dataset.loc[dataset['workclass'] != ' Private', 'workclass'] = 0
-    dataset.loc[dataset['workclass'] == ' Private', 'workclass'] = 1
-    dataset.loc[dataset['hours-per-week'] <= 40, 'hours-per-week'] = 0
-    dataset.loc[dataset['hours-per-week'] > 40, 'hours-per-week'] = 1
-
-for col in dataset[dataset.columns]:  # To convert object data by label encoder
-    if dataset[col].dtypes == 'object':
-        le = LabelEncoder()
-        dataset[col] = le.fit_transform(dataset[col])
-dataset = dataset.astype(int)
-dataset=dataset.drop(["education"],axis=1)
-
-X = dataset.drop(['salary'], axis=1)
-y = dataset['salary']
-
-# balancing the skewed data
-from imblearn.over_sampling import RandomOverSampler 
-rs = RandomOverSampler(random_state=30)
-
-rs.fit(X,y)
-
-X,y = rs.fit_resample(X, y)
 
 @app.route('/')
 def home():
@@ -184,7 +145,7 @@ def predict():
     int_features = [int(a) for a in features]
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
-    #print(prediction)
+    print(prediction)
     
     if prediction == 1:
         output = "Income is more than 50K"
