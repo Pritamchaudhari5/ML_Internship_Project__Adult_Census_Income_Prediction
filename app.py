@@ -6,7 +6,7 @@ import pickle
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 
-dataset = pd.read_csv(r"D:\Intern projects\ML_Internship_Project__Adult_Census_Income_Prediction\Adult_Census_Income_Data\adult.csv")
+dataset = pd.read_csv(r"Adult_Census_Income_Data\adult.csv")
 
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
@@ -194,6 +194,6 @@ def predict():
     return render_template('index.html', prediction_text='{}'.format(output))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port=8080)
 
 
