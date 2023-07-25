@@ -9,7 +9,7 @@ model = pickle.load(open('model.pkl', 'rb'))
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('Index.html')
 
 @app.route('/predict',methods=['POST'])
 def predict():
@@ -145,14 +145,14 @@ def predict():
     int_features = [int(a) for a in features]
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
-    print(prediction)
+    #print(prediction)
     
     if prediction == 1:
         output = "Income is more than 50K"
     elif prediction == 0:
         output = "Income is less than 50K"
         
-    return render_template('index.html', prediction_text='{}'.format(output))
+    return render_template('Index.html', prediction_text='{}'.format(output))
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=8080)
